@@ -7,11 +7,11 @@
                     <form [formGroup]="todoForm">
                         <mat-form-field appearance="outline">
                             <mat-label>Task name</mat-label>
-                            <input matInput placeholder="Placeholder">
+                            <input formControlName="item" matInput placeholder="Placeholder">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                             <mat-hint>Add task Name</mat-hint>
                           </mat-form-field>
-                       <button class="btn btn-primary" mat-button>Add</button>
+                       <button class="btn btn-primary" mat-button [disabled]="todoForm.invalid">Add</button>
                     </form>
                    
                 </mat-card>
