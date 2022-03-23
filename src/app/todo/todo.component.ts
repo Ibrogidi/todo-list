@@ -10,10 +10,13 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+  value: any;
   todoForm !: FormGroup;
   todo: ITask [] = [];
   inprogress: ITask[] = [];
   done: ITask[] =[];
+  updateIndex: any;
+  isEditEnabled: boolean= false;
   constructor(private fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,12 +45,33 @@ export class TodoComponent implements OnInit {
     this.todo.push({
       description: this.todoForm.value.item,
       done: false
-    })
+    });
+    this.todoForm.reset();
   }
-  deleteTask(i: number){
-this.todo.splice(i,1);
+  deleteTask(i: number,arrName:string){
 
-    
+    if(arrName==='todo'){
+      this.todo.splice(i,1);
+
+    }
+    if(arrName==='inprogress'){
+      this.inprogress.splice(i,1);
+    }
+    if(arrName==='done'){
+      this.done.splice(i,1);
+    }
   }
+  onEdit(item: ITask,index:number){
+    this.updateIndex = index;
+    this.todoForm.controls['item'].setValue(item.description);
+    this.isEditEnabled = true;
+  }
+updateTask(){
+  this.todo[this.updateIndex].description =  this.todoForm.value.item;
+  this.todo[this.updateIndex].done = false;
+  this.todoForm.reset();
+  this.updateIndex = undefined;
+  this.isEditEnabled = false;
+}
 
 }

@@ -1,3 +1,5 @@
+
+
 :host .mat-form-field{
     width: 100%
 }
@@ -22,7 +24,7 @@ button.add{
     overflow: hidden;
     display: block;
   }
-  
+
   .example-box {
     padding: 20px 10px;
     border-bottom: solid 1px #ccc;
@@ -33,10 +35,10 @@ button.add{
     justify-content: space-between;
     box-sizing: border-box;
     cursor: move;
-    background: yellow;
+    background: white;
     font-size: 14px;
   }
-  
+ 
   .cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;
